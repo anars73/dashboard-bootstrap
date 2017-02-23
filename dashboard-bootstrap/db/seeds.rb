@@ -9,3 +9,4 @@
 Dashboard.create!(name: 'Madis operations AS', description: 'We make bands rock yo')
 Dashboard.create!(name: 'Ahti operations AS', description: 'Work is da poop. NO MORE!' )
 Dashboard.create!(name: 'Jaan operations AS', description: 'I dont get paid much so I am salty!' )
+Dashboard.create!(name: 'Dan operations AS', description: 'I am an alcoholic in denial' )
