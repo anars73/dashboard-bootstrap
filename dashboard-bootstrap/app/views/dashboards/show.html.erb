@@ -2,13 +2,13 @@
 
 <p>
   <strong>Name:</strong>
-  <%= @dashboard.name %>
+  <%= @dashboards.name %>
 </p>
 
 <p>
   <strong>Description:</strong>
-  <%= @dashboard.description %>
+  <%= @dashboards.description %>
 </p>
 
-<%= link_to 'Edit', edit_dashboard_path(@dashboard) %> |
+<%= link_to 'Edit', edit_dashboard_path(@dashboards[:id]) %> |
 <%= link_to 'Back', dashboards_path %>
