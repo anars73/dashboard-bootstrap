@@ -1,31 +1,75 @@
-<p id="notice"><%= notice %></p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+</head>
+<body>
 
-<h1>Dashboards</h1>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Project name</a>
+    </div>
+    <div id="navbar" class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div>
+</nav>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="container">
 
-  <tbody>
-    <% @dashboards.each do |dashboard| %>
+  <div class="starter-template" style="margin-top:10%;">
+    <h1>Dashboards</h1>
+    <p id="notice"><%= notice %></p>
+
+    <table class="table">
+      <thead>
       <tr>
-        <td><%= dashboard.name %></td>
-        <td><%= dashboard.description %></td>
-        <td><%= link_to 'Show', dashboard %></td>
-        <td><%= link_to 'Edit', edit_dashboard_path(dashboard) %></td>
-        <td><%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th>Name</th>
+        <th>Description</th>
+        <th colspan="3"></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      </thead>
 
-<br>
+      <tbody>
+      <% @dashboards.each do |dashboard| %>
+          <tr>
+            <td><%= dashboard.name %></td>
+            <td><%= dashboard.description %></td>
+            <td><%= link_to 'Show', dashboard %></td>
+            <td><%= link_to 'Edit', edit_dashboard_path(dashboard) %></td>
+            <td><%= link_to 'Destroy', dashboard, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+          </tr>
+      <% end %>
+      </tbody>
+    </table>
 
-<%= link_to 'New Company', new_dashboard_company_path(@dashboards) %>
 
-<%= link_to 'New Dashboard', new_dashboard_path %>
+    <h4><%= link_to 'New Company', new_dashboard_company_path(@dashboards) %></h4>
+
+    <h4><%= link_to 'New Dashboard', new_dashboard_path %></h4>
+  </div>
+
+</div><!-- /.container -->
+
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="../../dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+</body>
+</html>
