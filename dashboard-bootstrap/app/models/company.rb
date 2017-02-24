@@ -1,3 +1,5 @@
 class Company < ApplicationRecord
-  belongs_to :dashboard
+  has_many :employees, dependent: :destroy
+  validates :name, :description, presence: true
+
 end
