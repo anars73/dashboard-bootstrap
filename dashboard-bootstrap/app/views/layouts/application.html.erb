@@ -7,13 +7,22 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+  <style>
+    a.navbar-brand {
+      text-transform: uppercase;
+      font-weight: bolder;
+      font-size: 1.4em;
+    }
+    .navbar-inverse .navbar-brand {color: #fff}
+  </style>
 
   <body style="margin: 10%">
     <% flash.each do |key, value| %>
         <%= content_tag :div, value, class: "flash #{key}" %>
     <% end %>
     <%= yield %>
-
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
   <!-- Start navbar !-->
     <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="container">
