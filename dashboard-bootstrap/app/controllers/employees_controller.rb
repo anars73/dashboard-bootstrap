@@ -37,6 +37,13 @@ class EmployeesController < ApplicationController
 
   end
 
+  def destroy
+    @company = Company.find(params[:company_id])
+    @employee = Employee.find(params[:id])
+    @employee.destroy
+    redirect_to company_employees_url
+  end
+
   # GET /dashboards/new
   def new
     @company = Company.find(params[:company_id])

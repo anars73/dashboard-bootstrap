@@ -1,9 +1,24 @@
+<h1>Companies</h1>
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Employees</th>
+  </tr>
+  </thead>
+  <tbody>
+
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= link_to company.name, company_path(company) %></td>
+        <td><%= link_to company.description, company_path(company) %></td>
+        <td><%= link_to company.employees.count, company_employees_url(company) %></td>
+        </tr>
+    <% end %>
+
+  </tbody>
+
+</table>
+
 <%= link_to 'New company', new_company_path %>
-<ul>
-  <% @companies.each do |company| %>
-    <li><%= link_to company.name, edit_company_path(company) %></li>
-      <% if false %>
-           <li><%= link_to company.employees, edit_company_employee_path(company) %></li>
-<% end %>
-  <% end %>
-</ul>

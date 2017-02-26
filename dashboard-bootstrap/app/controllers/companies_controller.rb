@@ -30,8 +30,14 @@ class CompaniesController < ApplicationController
       flash[:alert] = 'Update failed'
       render :edit
     end
-
   end
+
+  def destroy
+    @company = Company.find(params[:id])
+    @company.destroy
+    redirect_to companies_path
+  end
+
   # GET /dashboards/new
   def new
     @company = Company.new

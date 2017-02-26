@@ -1,14 +1,17 @@
-<%= form_for ([@company, @employee])  do |f| %>
-    <%= f.label :first_name %>
+<%= bootstrap_form_for ([@company, @employee])  do |f| %>
     <%= f.text_field :first_name %>
 
-    <%= f.label :last_name %>
     <%= f.text_area :last_name %>
 
 
     <%= f.submit 'Update' %>
-    <br>
 
 <% end %>
-<%= link_to 'New employee', companies_path %><br>
-<%= link_to 'Back', companies_path %>
+<br>
+<%= link_to 'Destroy', company_employee_path,
+            method: :delete,
+            data: {
+                confirm: 'Are you sure?'
+            }
+%><br>
+<%= link_to 'Back', company_employees_url(@company) %>

@@ -1,8 +1,29 @@
-<strong>Viewing employees for </strong><%= @company.name %><br><br>
-<%= link_to 'New employee', new_company_employee_path(@company) %>
-<ul>
+<h1>Viewing employees for <%= @company.name %></h1><br><br>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>First name</th>
+    <th>Last name</th>
+  </tr>
+  </thead>
+  <tbody>
+
   <% @company.employees.each do |employee| %>
-      <li><%= link_to "Edit #{employee.first_name} #{employee.last_name}", edit_company_employee_path(@company, employee) %></li>
+      <tr>
+        <td><%= link_to " #{employee.first_name}", edit_company_employee_path(@company, employee) %></td>
+        <td><%= link_to " #{employee.last_name}", edit_company_employee_path(@company, employee) %></td>
+      </tr>
   <% end %>
 
-</ul>
+  </tbody>
+
+</table>
+<br>
+
+
+
+<h4><%= link_to 'New employee', new_company_employee_path(@company) %></h4>
+
+<h4><%= link_to 'Back to Companies', companies_url %></h4>
