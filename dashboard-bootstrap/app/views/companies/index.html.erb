@@ -1,0 +1,9 @@
+<%= link_to 'New company', new_company_path %>
+<ul>
+  <% @companies.each do |company| %>
+    <li><%= link_to company.name, edit_company_path(company) %></li>
+      <% if false %>
+           <li><%= link_to company.employees, edit_company_employee_path(company) %></li>
+<% end %>
+  <% end %>
+</ul>

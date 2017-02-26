@@ -1,0 +1,10 @@
+<%= form_for ([@company, @employee])  do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
+
+    <%= f.submit 'Create' %>
+    <%= link_to 'Back', company_employees_url %>
+<% end %>

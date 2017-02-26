@@ -1,0 +1,14 @@
+<%= form_for ([@company, @employee])  do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+
+    <%= f.label :last_name %>
+    <%= f.text_area :last_name %>
+
+
+    <%= f.submit 'Update' %>
+    <br>
+
+<% end %>
+<%= link_to 'New employee', companies_path %><br>
+<%= link_to 'Back', companies_path %>

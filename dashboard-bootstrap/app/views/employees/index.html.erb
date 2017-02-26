@@ -1,0 +1,8 @@
+<strong>Viewing employees for </strong><%= @company.name %><br><br>
+<%= link_to 'New employee', new_company_employee_path(@company) %>
+<ul>
+  <% @company.employees.each do |employee| %>
+      <li><%= link_to "Edit #{employee.first_name} #{employee.last_name}", edit_company_employee_path(@company, employee) %></li>
+  <% end %>
+
+</ul>
