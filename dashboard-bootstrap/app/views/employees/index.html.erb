@@ -9,21 +9,15 @@
   </tr>
   </thead>
   <tbody>
-
   <% @company.employees.each do |employee| %>
       <tr>
         <td><%= link_to " #{employee.first_name}", edit_company_employee_path(@company, employee) %></td>
         <td><%= link_to " #{employee.last_name}", edit_company_employee_path(@company, employee) %></td>
       </tr>
   <% end %>
-
   </tbody>
-
 </table>
 <br>
 
-
-
 <h4><%= link_to 'New employee', new_company_employee_path(@company) %></h4>
-
 <h4><%= link_to 'Back to Companies', companies_url %></h4>

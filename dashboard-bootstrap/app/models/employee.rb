@@ -1,4 +1,4 @@
 class Employee < ApplicationRecord
-  belongs_to :company, required: false
+  belongs_to :company
   validates :first_name, :last_name, presence: true
 end

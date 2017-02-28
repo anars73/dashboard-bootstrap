@@ -1,13 +1,12 @@
-class EmployeesController < ApplicationController
-  before_action :authenticate_user!
+class EmployeesController < AdminsController
+  before_action :find_company_id
+  before_action :find_employee_id, only: [:edit, :show, :update, :destroy]
 
   def index
-    @company = Company.find(params[:company_id])
     @employees = Employee.all
   end
 
   def create
-    @company = Company.find(params[:company_id])
     @employee = @company.employees.new(employee_params)
     if @employee.save
       redirect_to company_employees_url
@@ -17,18 +16,12 @@ class EmployeesController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:company_id])
-    @employee = @company.employees.find(params[:id])
   end
 
   def edit
-    @company = Company.find(params[:company_id])
-    @employee = Employee.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:company_id])
-    @employee = Employee.find(params[:id])
     if @employee.update(employee_params)
       flash[:notice] = 'Update successful'
       redirect_to company_employees_url
@@ -36,26 +29,32 @@ class EmployeesController < ApplicationController
       flash[:alert] = 'Update failed'
       render :edit
     end
-
   end
 
   def destroy
-    @company = Company.find(params[:company_id])
-    @employee = Employee.find(params[:id])
-    @employee.destroy
-    redirect_to company_employees_url
+    if @employee.destroy
+      redirect_to company_employees_url
+    else
+      puts 'Something went wrong!'
+    end
   end
 
   # GET /dashboards/new
   def new
-    @company = Company.find(params[:company_id])
     @employee = @company.employees.new
   end
 
   private
 
+  def find_company_id
+    @company = Company.find(params[:company_id])
+  end
+
+  def find_employee_id
+    @employee = Employee.find(params[:id])
+  end
+
   def employee_params
     params.require(:employee).permit(:company_id, :first_name, :last_name)
   end
-
 end

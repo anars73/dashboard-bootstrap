@@ -8,7 +8,6 @@
   </tr>
   </thead>
   <tbody>
-
     <% @companies.each do |company| %>
       <tr>
         <td><%= link_to company.name, company_path(company) %></td>
@@ -16,9 +15,8 @@
         <td><%= link_to company.employees.count, company_employees_url(company) %></td>
         </tr>
     <% end %>
-
   </tbody>
-
 </table>
 
+<%= will_paginate @company %><br>
 <%= link_to 'New company', new_company_path %>

@@ -1,8 +1,8 @@
-class CompaniesController < ApplicationController
-  before_action :authenticate_user!
+class CompaniesController < AdminsController
+  before_action :find_company_id,  only: [:edit, :show, :update, :destroy]
 
   def index
-    @companies = Company.all
+    @companies = Company.paginate(:page => params[:page], :per_page => 20)
   end
 
   def create
@@ -15,15 +15,12 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:id])
   end
 
   def edit
-    @company = Company.find(params[:id])
   end
 
   def update
-    @company = Company.find(params[:id])
     if @company.update(company_params)
       flash[:notice] = 'Update successful'
       redirect_to companies_path
@@ -34,7 +31,6 @@ class CompaniesController < ApplicationController
   end
 
   def destroy
-    @company = Company.find(params[:id])
     @company.destroy
     redirect_to companies_path
   end
@@ -46,8 +42,11 @@ class CompaniesController < ApplicationController
 
   private
 
+  def find_company_id
+    @company = Company.find(params[:id])
+  end
+
   def company_params
     params.require(:company).permit(:name, :description)
   end
-
 end

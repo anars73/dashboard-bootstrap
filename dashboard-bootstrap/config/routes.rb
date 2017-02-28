@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  devise_for :users
+  resources :products
+  devise_for :admins
   resources :dashboard, only: [:index]
 
   root 'dashboard#index'
